@@ -1,0 +1,9 @@
+T1: roslaunch kinova_vision kinova_vision.launch 
+T2: rosrun image_view image_view image:=/camera/color/image_raw
+
+
+Launch Driver: roslaunch kortex_driver kortex_driver.launch gripper:=robotiq_2f_140
+
+Launch Camera: roslaunch kinova_vision kinova_vision.launch
+
+Launch Arm: roslaunch arm arm.launch

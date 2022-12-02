@@ -1,0 +1,4 @@
+everything in arm
+\ros_kortex\kortex_examples\src\move_it\movementService.py
+\ros_kortex\kortex_examples\src\move_it\movementService.py
+ros_kortex\kortex_examples\launch\movementNew.launch
