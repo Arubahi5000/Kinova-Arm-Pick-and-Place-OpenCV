@@ -2,6 +2,10 @@
 
 This was part of our COMP3431 Robotic Architecture Final Project at UNSW Computer Science Engineering. We had to conduct a pick and place using the OpenCV Computer Vision library. The KINOVA arm was running on ROS KORTEX and using the MoveIt and KORTEX Vision Packages. Unfortunately, due to time constraints were were not able to complete the task fully however we had the individual components to create a successful project if we only we had a bit more time.
 
+# Demo Video
+
+https://youtu.be/RCj4Ev9_DyM
+
 # Follow these steps to replicate our demo
 
 1. roslaunch kortex_gazebo spawn_kortex_robot.launch gripper:=robotiq_2f_140 start_rviz:=false
