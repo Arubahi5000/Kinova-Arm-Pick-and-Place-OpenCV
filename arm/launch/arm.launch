@@ -1,0 +1,19 @@
+<launch>
+
+    <!-- Robot namespace -->
+    <arg name="robot_name" default="my_gen3"/>
+    <arg name="start_delay_seconds" default="2"/>
+
+    <!-- Launch the example in that namespace -->
+    <node name="arm_colour" pkg="arm" type="colour.py" ns="$(arg robot_name)" output="screen" launch-prefix="bash -c 'sleep $(arg start_delay_seconds); $0 $@' "/>
+    <!-- <node name="arm_depth" pkg="arm" type="depth.py" ns="$(arg robot_name)" output="screen" launch-prefix="bash -c 'sleep $(arg start_delay_seconds); $0 $@' "/> -->
+    <!-- <node name="arm_process" pkg="arm" type="process.py" ns="$(arg robot_name)" output="screen" launch-prefix="bash -c 'sleep $(arg start_delay_seconds); $0 $@' "/> -->
+    <node name="arm_master" pkg="arm" type="master.py" ns="$(arg robot_name)" output="screen" launch-prefix="bash -c 'sleep $(arg start_delay_seconds); $0 $@' "/>
+    
+    <include file="src/ros_kortex/kortex_examples/launch/movementNew.launch"> 
+        <arg name="robot_name" value="$(arg robot_name)"/>
+        <arg name="start_delay_seconds" value="$(arg start_delay_seconds)"/>
+    </include>
+
+   
+</launch>

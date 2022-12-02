@@ -1,0 +1,29 @@
+<launch>
+
+    <!-- Robot namespace -->
+    <arg name="robot_name" default="my_gen3"/>
+    <arg name="start_delay_seconds" default="2"/>
+
+    <include file="src/ros_kortex/kortex_gazebo/launch/spawn_kortex_robot.launch"> 
+        <arg name="robot_name" value="$(arg robot_name)"/>
+        <arg name="start_delay_seconds" value="0"/>
+        <arg name="gripper" value="robotiq_2f_140"/>
+        <arg name="start_rviz" value="false"/>
+    </include>
+
+    <!-- <include file="src/usb_cam/launch/usb_cam-test.launch"> 
+    </include> -->
+
+    <!-- Launch the example in that namespace -->
+    <node name="arm_colour" pkg="arm" type="colour.py" ns="$(arg robot_name)" output="screen" launch-prefix="bash -c 'sleep $(arg start_delay_seconds); $0 $@' "/>
+    <node name="arm_depth" pkg="arm" type="depth.py" ns="$(arg robot_name)" output="screen" launch-prefix="bash -c 'sleep $(arg start_delay_seconds); $0 $@' "/>
+    <node name="arm_process" pkg="arm" type="process.py" ns="$(arg robot_name)" output="screen" launch-prefix="bash -c 'sleep $(arg start_delay_seconds); $0 $@' "/>
+    <node name="arm_master" pkg="arm" type="master.py" ns="$(arg robot_name)" output="screen" launch-prefix="bash -c 'sleep $(arg start_delay_seconds); $0 $@' "/>
+    
+    <include file="src/ros_kortex/kortex_examples/launch/movement.launch"> 
+        <arg name="robot_name" value="$(arg robot_name)"/>
+        <arg name="start_delay_seconds" value="$(arg start_delay_seconds)"/>
+    </include>
+
+   
+</launch>
